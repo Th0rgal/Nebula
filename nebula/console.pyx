@@ -36,8 +36,8 @@ class NebulaShell:
 
     def print_welcome(self):
         print(
-            "Nebula has been successfully started, this is an"
-            " interactive shell allowing you to send orders."
+            "Nebula has been successfully started, this is an interactive"
+            " shell designed  to assist you during binance pumps."
             " Type h for help."
         )
 
