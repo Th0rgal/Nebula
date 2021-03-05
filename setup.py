@@ -25,15 +25,16 @@ def scandir(dir, files=[]):
 
 # generate an Extension object from its dotted name
 def makeExtension(extName):
-    extPath = extName.replace(".", os.path.sep)+".pyx"
+    extPath = extName.replace(".", os.path.sep) + ".pyx"
     return Extension(
         extName,
         [extPath],
-        include_dirs = [],
-        extra_compile_args = ["-O3", "-Wall"],
-        extra_link_args = ['-g'],
-        libraries = [],
-        )
+        include_dirs=[],
+        extra_compile_args=["-O3", "-Wall"],
+        extra_link_args=["-g"],
+        libraries=[],
+    )
+
 
 # get the list of extensions
 extNames = scandir("nebula")
@@ -43,8 +44,8 @@ extensions = [makeExtension(name) for name in extNames]
 
 # finally, we can pass all this to distutils
 setup(
-  name="nebula",
-  packages=["nebula", "nebula.filters"],
-  ext_modules=extensions,
-  cmdclass = {'build_ext': build_ext},
+    name="nebula",
+    packages=["nebula", "nebula.filters"],
+    ext_modules=extensions,
+    cmdclass={"build_ext": build_ext},
 )

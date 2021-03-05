@@ -6,9 +6,8 @@ from console import NebulaShell
 
 async def main(loop):
     config = TomlConfig("config.toml", "config.template.toml")
-    shell = NebulaShell(loop)
+    shell = NebulaShell(loop, None)
     await shell.start()
-    print("hello")
 
 
 
