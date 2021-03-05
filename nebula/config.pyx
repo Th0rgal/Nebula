@@ -20,4 +20,7 @@ class TomlConfig(Config):
 
     def load_config(self, config_file):
         config = toml.load(config_file)
-        self.keys = config["keys"]
+        keys = config["keys"]
+        self.proxy = keys.get("proxy", None)
+        self.api_key = keys["api_key"]
+        self.api_secret = keys["api_secret"]

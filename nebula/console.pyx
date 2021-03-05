@@ -20,6 +20,7 @@ class NebulaShell:
             args = content.split(" ")
             commands = {
                 ("help", "h"): self.print_help,
+                ("balances", "bal", "b"): self.print_balances,
                 ("exit", "e"): self.exit,
             }
             for labels in commands:
@@ -47,6 +48,9 @@ class NebulaShell:
             "\n- [help, h] # print this help"
             "\n- [exit, e] # exit this shell"
         )
+
+    def print_balances(self, args):
+        print(str(self.client.cleaned_balances))
 
     def exit(self, args):
         self.enabled = False

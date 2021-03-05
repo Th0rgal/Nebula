@@ -2,11 +2,14 @@ import asyncio
 
 from config import TomlConfig
 from console import NebulaShell
+from client_wrapper import WrappedClient
 
 
 async def main(loop):
     config = TomlConfig("config.toml", "config.template.toml")
-    shell = NebulaShell(loop, None)
+    wrapped_client = WrappedClient(config.api_key, config.api_secret, config.proxy)
+    await wrapped_client.load(loop)
+    shell = NebulaShell(loop, wrapped_client)
     await shell.start()
 
 
